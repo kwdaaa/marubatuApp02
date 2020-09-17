@@ -26,7 +26,7 @@ class topViewController: UIViewController {
        //まずは、同じstororyboard内であることをここで定義します
        let storyboard: UIStoryboard = self.storyboard!
        //ここで移動先のstoryboardを選択(今回の場合は先ほどsecondと名付けたのでそれを書きます)
-       let second = storyboard.instantiateViewController(withIdentifier: "challenge")
+       let second = storyboard.instantiateViewController(withIdentifier: "challenge")as! ViewController
        //ここが実際に移動するコードとなります
        self.present(second, animated: true, completion: nil)
     }
@@ -37,7 +37,7 @@ class topViewController: UIViewController {
         //まずは、同じstororyboard内であることをここで定義します
         let storyboard: UIStoryboard = self.storyboard!
         //ここで移動先のstoryboardを選択(今回の場合は先ほどsecondと名付けたのでそれを書きます)
-        let second = storyboard.instantiateViewController(withIdentifier: "make")
+        let second = storyboard.instantiateViewController(withIdentifier: "make")as! QuestionViewController
         //ここが実際に移動するコードとなります
         self.present(second, animated: true, completion: nil)
     }

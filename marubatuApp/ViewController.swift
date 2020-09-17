@@ -66,6 +66,8 @@ class ViewController: UIViewController {
             
             let question = questions[currentQuestionNum]
             
+            
+            
             // as? Stringは型指定のお作法
             if let que = question["question"] as? String {
                 
@@ -84,6 +86,8 @@ class ViewController: UIViewController {
             questionLabel.text = "問題を作ってください"
             falseButton.isEnabled = false
             trueButton.isEnabled = false
+            
+            
             
         }
         
@@ -104,11 +108,11 @@ class ViewController: UIViewController {
                 currentQuestionNum += 1
                 showAlert(message: "正解")
                 
-            
+                
                 
                 count += 1
                 
-//                ansLabel.text = String(count)
+                //                ansLabel.text = String(count)
                 
                 
                 print(count)
@@ -132,31 +136,31 @@ class ViewController: UIViewController {
         // questions.countは３。配列番号ではなく、数。
         if currentQuestionNum >= questions.count {
             
-//            最初の質問に戻る
-//            currentQuestionNum = 0
+            //            最初の質問に戻る
+            //            currentQuestionNum = 0
             
             print(currentQuestionNum)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            // 0.5秒後に実行したい処理
-             let storyboard: UIStoryboard = self.storyboard!
-             let nextView = storyboard.instantiateViewController(withIdentifier: "result")as! ResultViewController
-             self.present(nextView, animated: true, completion: nil)
-            }
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            //            // 0.5秒後に実行したい処理
+            //             let storyboard: UIStoryboard = self.storyboard!
+            //             let nextView = storyboard.instantiateViewController(withIdentifier: "result")as! ResultViewController
+            //             self.present(nextView, animated: true, completion: nil)
+            //            }
             
-//            let storyboard: UIStoryboard = self.storyboard!
-//            //ここで移動先のstoryboardを選択
-//            let hoge = storyboard.instantiateViewController(withIdentifier: "result")
-//            //ここが実際に移動するコードとなります
-//            self.present(hoge, animated: true, completion: nil)
-            
-            
+            //            let storyboard: UIStoryboard = self.storyboard!
+            //            //ここで移動先のstoryboardを選択
+            //            let hoge = storyboard.instantiateViewController(withIdentifier: "result")
+            //            //ここが実際に移動するコードとなります
+            //            self.present(hoge, animated: true, completion: nil)
             
             
             
-//            let controller = self.storyboard?.instantiateViewController(withIdentifier: "result") as! ResultViewController
-//            self.navigationController?.pushViewController(controller, animated: true)
-//            self.present(controller, animated: true, completion: nil)
+            
+            
+            //            let controller = self.storyboard?.instantiateViewController(withIdentifier: "result") as! ResultViewController
+            //            self.navigationController?.pushViewController(controller, animated: true)
+            //            self.present(controller, animated: true, completion: nil)
             
             
             
@@ -179,23 +183,36 @@ class ViewController: UIViewController {
         
         let alert = UIAlertController(title: nil, message:message, preferredStyle: .alert)
         
+        //        let alert = UIAlertController(title: nil, message:message, preferredStyle: UIAlertController.Style.alert)
+        
         let close = UIAlertAction(title: "閉じる", style: .cancel, handler: nil)
+        //        let close = UIAlertAction(title: "閉じる", style: UIAlertAction.Style.default, handler:{(action: UIAlertAction!) in
+        //
+        //
         
         
         
-        
-        
+        if currentQuestionNum >= questions.count {
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                // 0.5秒後に実行したい処理
+                let storyboard: UIStoryboard = self.storyboard!
+                let nextView = storyboard.instantiateViewController(withIdentifier: "result")as! ResultViewController
+                self.present(nextView, animated: true, completion: nil)
+                
+            }
+        }
         
         // "閉じる"ボタンの追加
         alert.addAction(close)
-    
+        
         
         present(alert, animated: true, completion: nil)
         
-        
-        
-        
     }
+    
+    
     
     @IBOutlet var falseButton: UIButton!
     
