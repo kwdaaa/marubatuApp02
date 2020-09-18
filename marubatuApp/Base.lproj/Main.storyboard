@@ -37,7 +37,7 @@
                         <constraints>
                             <constraint firstItem="Jvo-qd-dTd" firstAttribute="bottom" secondItem="2XC-mZ-vNv" secondAttribute="bottom" constant="300" id="ivq-Rc-XyJ"/>
                             <constraint firstItem="ub8-p2-PsC" firstAttribute="centerX" secondItem="h2w-RS-rG7" secondAttribute="centerX" id="s4p-1V-1Ym"/>
-                            <constraint firstItem="2XC-mZ-vNv" firstAttribute="centerX" secondItem="h2w-RS-rG7" secondAttribute="centerX" id="tiF-Qi-lYP"/>
+                            <constraint firstItem="2XC-mZ-vNv" firstAttribute="centerX" secondItem="h2w-RS-rG7" secondAttribute="centerX" identifier="result" id="tiF-Qi-lYP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jvo-qd-dTd"/>
                     </view>

@@ -12,19 +12,28 @@ class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        var ansCount = (UIApplication.sharedApplication().delegate as! ViewController).ansCount
-//        ansLabel.text = String(ansCount)
-//        
-//    
+    }
+    
+    var seikaiNum:Int = 0
+    
+    override func viewWillAppear(_ animated: Bool) {
+    
         
+    let userDefaults = UserDefaults.standard
+
+        if userDefaults.object(forKey: "countKey") != nil{
+            seikaiNum = userDefaults.object(forKey: "countKey") as! Int
+        }
+        
+        print(seikaiNum)
+        ansLabel.text = "seikaiNum"
         
     }
     
     
     @IBOutlet var ansLabel: UILabel!
     
-
+    
     /*
     // MARK: - Navigation
 

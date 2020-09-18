@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         showQuestion()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         
         // 配列に入っている質問を表示
@@ -38,11 +39,12 @@ class ViewController: UIViewController {
     }
     
     
+    
     @IBOutlet var questionLabel: UILabel!
     
     var currentQuestionNum = 0
     
-    var count = 0
+    
     
     var questions : [[String:Any]] = []
     
@@ -95,6 +97,8 @@ class ViewController: UIViewController {
         
     }
     
+    var count = 0
+    
     func checkAnswer(userAnswer:Bool){
         
         let question = questions[currentQuestionNum]
@@ -106,13 +110,16 @@ class ViewController: UIViewController {
             if userAnswer == ans {
                 // 正解
                 currentQuestionNum += 1
+                count += 1
+                
                 showAlert(message: "正解")
                 
                 
                 
-                count += 1
                 
-                //                ansLabel.text = String(count)
+                
+//                ansLabel.text = String(count)
+                
                 
                 
                 print(count)
@@ -131,44 +138,7 @@ class ViewController: UIViewController {
             return
         }
         
-        // 配列の数（questions.count）より大きくなってしまったら、0に戻る
-        // currentQuestionNum（呼び出す配列をコントロールするもの）
-        // questions.countは３。配列番号ではなく、数。
-        if currentQuestionNum >= questions.count {
-            
-            //            最初の質問に戻る
-            //            currentQuestionNum = 0
-            
-            print(currentQuestionNum)
-            
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            //            // 0.5秒後に実行したい処理
-            //             let storyboard: UIStoryboard = self.storyboard!
-            //             let nextView = storyboard.instantiateViewController(withIdentifier: "result")as! ResultViewController
-            //             self.present(nextView, animated: true, completion: nil)
-            //            }
-            
-            //            let storyboard: UIStoryboard = self.storyboard!
-            //            //ここで移動先のstoryboardを選択
-            //            let hoge = storyboard.instantiateViewController(withIdentifier: "result")
-            //            //ここが実際に移動するコードとなります
-            //            self.present(hoge, animated: true, completion: nil)
-            
-            
-            
-            
-            
-            //            let controller = self.storyboard?.instantiateViewController(withIdentifier: "result") as! ResultViewController
-            //            self.navigationController?.pushViewController(controller, animated: true)
-            //            self.present(controller, animated: true, completion: nil)
-            
-            
-            
-            
-            
-            
-            
-        }
+//        UserDefaults.standard.set(count, forKey: "countKey")
         
         // 問題の表示
         // 正解だったら、次の問題が表示される
@@ -185,30 +155,29 @@ class ViewController: UIViewController {
         
         //        let alert = UIAlertController(title: nil, message:message, preferredStyle: UIAlertController.Style.alert)
         
-        let close = UIAlertAction(title: "閉じる", style: .cancel, handler: nil)
-        //        let close = UIAlertAction(title: "閉じる", style: UIAlertAction.Style.default, handler:{(action: UIAlertAction!) in
-        //
-        //
+        var close = UIAlertAction(title: "閉じる", style: .cancel, handler: nil)
         
         
         
         if currentQuestionNum >= questions.count {
             
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                // 0.5秒後に実行したい処理
-                let storyboard: UIStoryboard = self.storyboard!
-                let nextView = storyboard.instantiateViewController(withIdentifier: "result")as! ResultViewController
-                self.present(nextView, animated: true, completion: nil)
+            close = UIAlertAction(title: "閉じる", style: .cancel, handler: {(action:UIAlertAction!)in
                 
-            }
+                UserDefaults.standard.set(self.count, forKey: "countKey")
+                
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                    // 0.5秒後に実行したい処理
+                    let storyboard: UIStoryboard = self.storyboard!
+                    let nextView = storyboard.instantiateViewController(withIdentifier: "result")as! ResultViewController
+                    self.present(nextView, animated: true, completion: nil)
+            })
         }
         
         // "閉じる"ボタンの追加
         alert.addAction(close)
         
-        
         present(alert, animated: true, completion: nil)
+        
         
     }
     
