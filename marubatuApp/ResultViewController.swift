@@ -26,7 +26,7 @@ class ResultViewController: UIViewController {
         }
         
         print(seikaiNum)
-        ansLabel.text = "seikaiNum"
+        ansLabel.text = "\(seikaiNum)"
         
     }
     
@@ -43,5 +43,10 @@ class ResultViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
+    @IBAction func resultBack(_ sender: Any) {
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
 }

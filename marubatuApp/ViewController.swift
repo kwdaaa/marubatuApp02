@@ -165,8 +165,6 @@ class ViewController: UIViewController {
                 
                 UserDefaults.standard.set(self.count, forKey: "countKey")
                 
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                    // 0.5秒後に実行したい処理
                     let storyboard: UIStoryboard = self.storyboard!
                     let nextView = storyboard.instantiateViewController(withIdentifier: "result")as! ResultViewController
                     self.present(nextView, animated: true, completion: nil)
@@ -204,6 +202,11 @@ class ViewController: UIViewController {
         checkAnswer(userAnswer: true)
         
         
+    }
+    
+    
+    @IBAction func challengeBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     
